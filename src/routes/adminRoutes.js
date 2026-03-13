@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const basicAuth = require("../middlewares/auth");
+const { requireAdmin } = require("../middlewares/auth");
 const { getAllArticles, createArticle, getArticleById, editArticle, deleteArticle } = require("../services/adminService");
 const { getFormattedDate } = require("../utils/fileHandler");
 
-router.use(basicAuth);
+router.use(requireAdmin);
 
 router.get("/", (req, res) => {
     res.redirect("/admin");

@@ -10,7 +10,9 @@ router.get("/", (req, res) => {
 
 router.get("/home", async (req, res) => {
     const articles = await getAllArticles();
-    res.render("index", { articles, isAdmin: false });
+    const page = "Personal Blog"
+    const title = page;
+    res.render("index", { articles, isAdmin: false, page, title });
 });
 
 router.get("/article/:id", async (req, res) => {

@@ -4,7 +4,7 @@ const compare = require("tsscmp");
 const check = (name, pass) => {
     let isValid = true;
 
-    isValid = compare(name, "mshandywinata") && isValid;
+    isValid = compare(name, "admin") && isValid;
     isValid = compare(pass, "admin") && isValid;
 
     return isValid;
@@ -14,11 +14,19 @@ const basicAuth = (req, res, next) => {
     const credentials = auth(req);
 
     if (credentials && check(credentials.name, credentials.pass)) {
-        return next();
+        req.isAdmin = true;
+    } else {
+        req.isAdmin = false;
     }
 
-    res.set('WWW-Authenticate', 'Basic realm="personal-blog"');
-    return res.status(401).send("Unauthorized");
+    next();
 }
 
-module.exports = basicAuth;
+const requireAdmin = (req, res, next) => {
+    if (!req.isAdmin) {
+        return res.status(403).send("Access Denied");
+    }
+    next();
+}
+
+module.exports = { basicAuth, requireAdmin };
