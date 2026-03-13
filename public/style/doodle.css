@@ -5,6 +5,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Short+Stack&display=swap');
 body {
   font-family: 'Short Stack', cursive;
+  max-width: 350px;
+  margin: 50px auto;
+  padding: 20px 30px;
+  border-style: solid;
+  border-width: 10px;
+  border-image: url(/style/border.svg) 10 10 10 10 stretch stretch;
 }
 
 .doodle * {
@@ -35,6 +41,24 @@ body {
 
 .doodle ul li {
   list-style-type: "* ";
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.doodle ul li span {
+  white-space: nowrap;
+  margin-right: 1em;
+}
+
+.doodle ul li .actions {
+  display: flex;
+  gap: 0.1em;
+  margin-left: auto;
+}
+
+.doodle ul li .actions a {
+  padding: 0.25em;
 }
 
 .doodle label {
@@ -187,4 +211,40 @@ body {
   outline: 2px dashed #3c3c3c;
   /* outline: transparent;
   filter: drop-shadow(0 0 3px #4d90fe) brightness(1.1) saturate(1.2); */
+}
+
+/* Form Layout */
+.doodle form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.doodle form input,
+.doodle form textarea {
+  width: 100%;
+  padding: 0.75em;
+  font-family: 'Short Stack', cursive;
+  font-size: 1em;
+}
+
+.doodle form input[readonly] {
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+.doodle form textarea {
+  min-height: 200px;
+  resize: vertical;
+}
+
+.doodle form button {
+  align-self: flex-start;
+  padding: 0.75em 1.5em;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.doodle form button:hover {
+  filter: brightness(0.95);
 }
