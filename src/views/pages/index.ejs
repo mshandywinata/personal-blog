@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../partials/head") %>
+<body class="doodle">
+    <%- include("../partials/header") %>
+    <% if (isAdmin) { %>
+        <h2><a href="/new">+ Add</a></h2>
+    <% } %>
+    <% if (!articles || articles.length === 0) { %>
+        <p>Sorry! No articles created yet.</p>
+    <% } else { %>
+        <ul>
+            <% articles.forEach(article => { %>
+                <li>
+                    <a href="/article/<%= article.id %>"><%= article.title %></a>
+                    <span><%= new Date(article.updatedAt).toLocaleDateString() %></span>
+                    <% if (isAdmin) { %>
+                        <div class="actions">
+                            <a href="/edit/<%= article.id %>">Edit</a>
+                            <a href="/delete/<%= article.id %>">Delete</a>
+                        </div>
+                    <% } %>
+                </li>
+            <% }); %>
+        </ul>
+    <% } %>
+</body>
+</html>

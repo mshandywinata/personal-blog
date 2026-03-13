@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../../partials/head.ejs") %>
+<body class="doodle">
+    <%- include("../../partials/header.ejs") %>
+    <form action="/create" method="post">
+        <input type="text" name="title" placeholder="Title" required>
+        <input type="text" name="createdAt" placeholder="Publishing Date" value="<%= createdAt %>" required disabled>
+        <textarea name="content" placeholder="Content" required></textarea>
+        <button type="submit">Publish</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../../partials/head") %>
+<body class="doodle">
+    <%- include("../../partials/header.ejs") %>
+    <form action="/edit/<%= id %>" method="post">
+        <input type="text" name="title" placeholder="Title" required value="<%= title %>">
+        <input type="text" name="createdAt" placeholder="Publishing Date" value="<%= updatedAt %>" required disabled>
+        <textarea name="content" placeholder="Content" required><%= content %></textarea>
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
