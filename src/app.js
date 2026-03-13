@@ -3,7 +3,6 @@ const express = require("express");
 
 const logger = require("./middlewares/logger");
 const errorHandler = require("./middlewares/errorHandler");
-const basicAuth = require("./middlewares/auth");
 
 const userRoutes = require("./routes/userRoutes");
 const adminRoutes = require("./routes/adminRoutes");
@@ -20,9 +19,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.use(logger);
-app.use(basicAuth);
 
-app.use("/admin", adminRoutes);
+app.use("/", adminRoutes);
 app.use("/", userRoutes);
 
 app.use(errorHandler);
